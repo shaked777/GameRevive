@@ -2,15 +2,16 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React from "react";
 import Rating from './Rating'
+import { Container } from 'react-bootstrap'
 
 
 function Product({ product }) {
   return (
-    <Card className="my-3 p-3 rounded">
+    
+    <Container>
+    <Card style={{ width: '17rem', height:'35rem'}} className="my-3 p-3 rounded">
     <Link to={`/product/${product._id}`}>
-      <center>
-      <Card.Img style={{ width: '17rem', height:'22rem'}} src={product.image} />
-      </center>
+      <Card.Img style={{ height:'20rem'}} src={product.image} />
     </Link>
     
       <Card.Body>
@@ -29,6 +30,7 @@ function Product({ product }) {
         </Card.Text>
       </Card.Body>
     </Card>
+    </Container>
   );
 }
 
