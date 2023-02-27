@@ -1,12 +1,20 @@
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Form, Button, Card, Alert } from 'react-bootstrap'
 import Message from '../components/Message'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 
+const StripeMessage = ({ stripeMessage }) => (
+    <section>
+      <p>{stripeMessage}</p>
+    </section>
+  );
+
 function CartScreen({ match, history }) {
+
+    const [stripeMessage, setstripeMessage] = useState("");
     let navigate = useNavigate();
     const location = useLocation()
     const {id} = useParams()
@@ -16,23 +24,52 @@ function CartScreen({ match, history }) {
 
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
-    console.log(cartItems)
+    const [show, setShow] = useState(false);
+
 
     useEffect(() => {
+        const query = new URLSearchParams(window.location.search);
+        setShow(true)
+        console.log(query);
+
+        if (query.get("canceled")) {
+            setstripeMessage(
+                "Order canceled -- continue to shop around and checkout when you're ready."
+              );
+        }
+    
         if (productId) {
             dispatch(addToCart(productId, qty))
         }
+        
+
     }, [dispatch, productId, qty])
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
     }
 
-    const checkoutHandler = () => {
-        navigate('/login?redirect=shipping')
-    }
 
     return (
+        <div>
+        { stripeMessage && 
+    <>
+    <Alert show={show} variant="danger">
+      <Alert.Heading>Somthing went worng</Alert.Heading>
+      <p>
+      Order canceled -- continue to shop around and checkout when you're ready.
+      </p>
+      <hr />
+      <div className="d-flex justify-content-end">
+        <Button onClick={() => setShow(false)} variant="">
+          Close me
+        </Button>
+      </div>
+    </Alert>
+  </>
+      }
+        
+
         <Row>
             <Col md={8}>
                 <h1>Shopping Cart</h1>
@@ -91,6 +128,7 @@ function CartScreen({ match, history }) {
             </Col>
 
             <Col md={4}>
+            <form action="http://localhost:3000/api/stripe/create-checkout-session" method="POST">
                 <Card>
                     <ListGroup variant='flush'>
                         <center>
@@ -100,24 +138,26 @@ function CartScreen({ match, history }) {
                         </ListGroup.Item>
                         </center>
                     
-
                     <ListGroup.Item className="d-grid gap-2">
+                    
                         <Button
-                            type='button'
+                            type='submit'
                             className='btn-block'
                             size="lg"
                             disabled={cartItems.length === 0}
-                            onClick={checkoutHandler}
                         >
                             Proceed To Checkout
                         </Button>
+                        
                     </ListGroup.Item>
                     </ListGroup>
 
 
                 </Card>
+                </form>
             </Col>
         </Row>
+        </div>
     )
 }
 
