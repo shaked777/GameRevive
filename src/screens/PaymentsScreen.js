@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 
 
 const ProductDisplay = () => (
@@ -28,11 +31,16 @@ const Message = ({ message }) => (
 );
 
 export default function App() {
-  const [message, setMessage] = useState("");
+    let navigate = useNavigate();
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+    const [message, setMessage] = useState("");
 
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
+    if (!userInfo) {
+        navigate('/login')}
 
     if (setMessage("success")) {
       console.log("Order placed! You will receive an email confirmation.");

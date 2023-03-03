@@ -5,6 +5,7 @@ import { Row, Col, Image, ListGroup, Button, Card, Form } from "react-bootstrap"
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import Recommended from "../components/Recommended";
 import { listProductDetails } from "../actions/productActions";
 
 function ProductScreen() {
@@ -106,7 +107,9 @@ function ProductScreen() {
             </Card>
           </Col>
         </Row>
+        
       )}
+      <Recommended></Recommended>
     </div>
   );
 }

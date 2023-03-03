@@ -14,6 +14,8 @@ const StripeMessage = ({ stripeMessage }) => (
 
 function CartScreen({ match, history }) {
 
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
     const [stripeMessage, setstripeMessage] = useState("");
     let navigate = useNavigate();
     const location = useLocation()
@@ -31,6 +33,7 @@ function CartScreen({ match, history }) {
         const query = new URLSearchParams(window.location.search);
         setShow(true)
         console.log(query);
+
 
         if (query.get("canceled")) {
             setstripeMessage(
@@ -139,8 +142,10 @@ function CartScreen({ match, history }) {
                         </center>
                     
                     <ListGroup.Item className="d-grid gap-2">
-                    
+
+                        { userInfo  ?
                         <Button
+
                             type='submit'
                             className='btn-block'
                             size="lg"
@@ -148,6 +153,8 @@ function CartScreen({ match, history }) {
                         >
                             Proceed To Checkout
                         </Button>
+                        
+                        :  <Link to='/login'>LOGIN</Link>}
                         
                     </ListGroup.Item>
                     </ListGroup>
