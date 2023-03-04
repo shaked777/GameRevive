@@ -20,7 +20,7 @@ function Recommended() {
 
   return (
     <div>
-      <h1>Recommended Products</h1>
+      <h3>Recommended Products</h3>
       {loading ? (
         <Loader />
       ) : error ? 

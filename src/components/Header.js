@@ -4,6 +4,7 @@ import { Navbar, Nav, Container, Row, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../actions/usersActions'
+import Search  from './Search'
 
 
 
@@ -21,13 +22,17 @@ function Header() {
   return (
     <header>
       <Navbar bg="primary" variant='dark' expand="lg" collapseOnSelect>
-      <Container fluid>
+      <Container>
         <LinkContainer to='/'>
         <Navbar.Brand>GameRevive</Navbar.Brand>
         </LinkContainer>
+        <Search/>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+          
           <Nav className="mr-auto">
+
+
 
           {userInfo ? (
             <NavDropdown title={userInfo.name} id='username'>

@@ -96,7 +96,7 @@ function RegisterScreen() {
                     >
                     </Form.Control>
                 </Form.Group>
-
+                <br />
                 <Button type='submit' variant='primary'>
                     Register
                 </Button>

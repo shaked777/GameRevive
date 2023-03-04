@@ -94,6 +94,24 @@ function ProfileScreen() {
                         </Form.Control>
                     </Form.Group>
 
+                    <br />
+
+                    <Button type='submit' variant='primary'>
+                        Update
+                    </Button>
+
+                </Form>
+            </Col>
+
+            <Col md={3}>
+                <h2>Change Password</h2>
+
+                {message && <Message variant='danger'>{message}</Message>}
+                {error && <Message variant='danger'>{error}</Message>}
+                {loading && <Loader />}
+                <Form onSubmit={submitHandler}>
+
+
                     <Form.Group controlId='password'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control
@@ -117,16 +135,12 @@ function ProfileScreen() {
                         >
                         </Form.Control>
                     </Form.Group>
-
+                    <br />
                     <Button type='submit' variant='primary'>
                         Update
-                </Button>
+                    </Button>
 
                 </Form>
-            </Col>
-
-            <Col md={9}>
-                <h2>My Orders</h2>
             </Col>
         </Row>
     )

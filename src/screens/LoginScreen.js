@@ -33,7 +33,7 @@ function LoginScreen() {
 
     return (
         <FormContainer>
-            <h1>Sign In</h1>
+            <h1>Login</h1>
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader />}
             <Form onSubmit={submitHandler}>
@@ -60,9 +60,9 @@ function LoginScreen() {
                     >
                     </Form.Control>
                 </Form.Group>
-
+                <br />
                 <Button type='submit' variant='primary'>
-                    Sign In
+                    Login
                 </Button>
             </Form>
 
