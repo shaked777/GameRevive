@@ -31,6 +31,7 @@ To run this application on your local machine, you will need to have Python, Nod
 8. Install the frontend dependencies using `npm install`
 9. Start the backend server using `python manage.py runserver`
 10. Start the frontend server using `npm start`
+- The backend is in GameRevive Back repo
 
 ## AI-Based Recommendation System
 Our online store uses an AI-based recommendation system to provide personalized game recommendations to users. This recommendation system is powered by state-of-the-art machine learning algorithms that analyze user behavior and preferences to suggest games that are likely to be of interest.
@@ -41,4 +42,4 @@ The recommendation system is built using Python and is integrated into the Djang
 ## Contributing
 We welcome contributions to this project! If you'd like to contribute, please fork the repository and submit a pull request with your changes.
 
-
+# Enjoy 👾
