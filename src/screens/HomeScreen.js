@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Product from "../components/Product";
@@ -22,21 +22,22 @@ function HomeScreen() {
     <div>
       <div>
         <center>
-      <h1>GameRevive</h1>
-      <h6>
-        Welcome to our online store for used games! <br /> <br/> Our selection includes both classic and newer titles,
-        so you're sure to find something you love. <br /> <br/>
-        We pride ourselves on providing high-quality, affordable games that you
-        can enjoy for hours on end. 
-        <br /> <br/>
-        Explore our collection today and find your next favorite game!
-      </h6>
-      </center>
+          <h1>GameRevive</h1>
+          <h6>
+            Welcome to our online store for used games! <br /> <br /> Our
+            selection includes both classic and newer titles, so you're sure to
+            find something you love. <br /> <br />
+            We pride ourselves on providing high-quality, affordable games that
+            you can enjoy for hours on end.
+            <br /> <br />
+            Explore our collection today and find your next favorite game!
+          </h6>
+        </center>
       </div>
       <br />
       <br />
       <center>
-      <h4>Our Best Seller</h4>
+        <h4>Our Best Seller</h4>
       </center>
       {loading ? (
         <Loader />
@@ -58,7 +59,7 @@ function HomeScreen() {
       <br />
       <br />
       <center>
-      <h4>All Products</h4>
+        <h4>All Products</h4>
       </center>
       {loading ? (
         <Loader />
